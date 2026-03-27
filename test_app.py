@@ -1,16 +1,15 @@
-# test_app.py
 import pytest
 from app import suma
 
-# Prueba 1: Caso feliz (UH-001: Validación de datos correctos)
+# Prueba 1: Caso feliz
 def test_suma_positivos():
     assert suma(2, 3) == 5
 
-# Prueba 2: Caso de borde con negativos
+# Prueba 2: Caso de borde
 def test_suma_negativos():
     assert suma(-1, 1) == 0
 
-# Prueba 3: Caso de fallo intencional (¡Para probar el pipeline!)
-@pytest.mark.xfail # Esperamos que falle si activas esto
+# Prueba 3: Caso de fallo intencional (¡PEGADO AL DECORADOR!)
+@pytest.mark.xfail
 def test_suma_error_intencional():
     assert suma(2, 2) == 5
