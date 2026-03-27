@@ -10,6 +10,6 @@ def test_suma_negativos():
     assert suma(-1, 1) == 0
 
 # Prueba 3: Caso de fallo intencional (¡PEGADO AL DECORADOR!)
-@pytest.mark.xfail
+
 def test_suma_error_intencional():
-    assert suma(2, 2) == 5
+    assert suma(2, 2) == 4
