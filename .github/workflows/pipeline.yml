@@ -1,0 +1,30 @@
+name: Pipeline de QA Automatizado # El nombre que verás en la pestaña Actions
+
+# 1. ¿CUÁNDO CORRE? (Disparadores)
+on:
+  push:
+    branches: [ main ] # Se activa cada vez que subes algo a la rama 'main'
+
+# 2. ¿QUÉ HACE? (Trabajos)
+jobs:
+  ejecutar-pruebas:
+    runs-on: ubuntu-latest # Le pedimos a GitHub una computadora con Linux
+
+    steps:
+      # Paso 1: "Bajar" tu código de GitHub a esa computadora virtual
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      # Paso 2: Instalar Python (como lo instalaste en tu PC)
+      - name: Configurar Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Paso 3: Instalar la herramienta de QA (Pytest)
+      - name: Instalar Pytest
+        run: pip install pytest
+
+      # Paso 4: ¡Correr los tests!
+      - name: Ejecutar pruebas de Pytest
+        run: pytest
